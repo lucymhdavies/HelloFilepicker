@@ -11,6 +11,13 @@ function processFilePicker(event) {
 	console.log("Loading metadata...");
 	filepicker.stat(
 		blob,
+		{
+			filename: true,
+			md5: true,
+			location: true,
+			path: true,
+			container: true
+		},
 		function(metadata){
 			console.log(JSON.stringify(metadata));
 		}
