@@ -1,4 +1,22 @@
 <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
 
+<script>
+function processFilePicker(event) {
+	console.log( event );
+
+	//alert(event.fpfile.url);
+
+	var blob = { url: event.fpfile.url };
+
+	console.log("Loading metadata...");
+	filepicker.stat(
+		blob,
+		function(metadata){
+			console.log(JSON.stringify(metadata));
+		}
+	);
+}
+</script>
+
 <input type="filepicker" data-fp-apikey="A5sBfk75TUuHQnoqYqTYgz"
-onchange="console.log(event); alert(event.fpfile.url)">
+onchange="processFilePicker(event);">
