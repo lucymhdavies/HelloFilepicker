@@ -23,6 +23,14 @@ function processFilePicker(event) {
 		}
 	);
 }
+
+$(function() {
+	filepicker.pick(
+	  function(Blob){
+	    console.log(Blob.url);
+	  }
+	);
+});
 </script>
 
 <input type="filepicker" data-fp-apikey="A5sBfk75TUuHQnoqYqTYgz"
