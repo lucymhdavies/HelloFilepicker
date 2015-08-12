@@ -1,37 +1,30 @@
 <script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
 
 <script>
-function processFilePicker(event) {
-	console.log( event );
-
-	//alert(event.fpfile.url);
-
-	var blob = { url: event.fpfile.url };
-
-	console.log("Loading metadata...");
-	filepicker.stat(
-		blob,
-		{
-			filename: true,
-			md5: true,
-			location: true,
-			path: true,
-			container: true
-		},
-		function(metadata){
-			console.log(JSON.stringify(metadata));
-		}
-	);
-}
 
 $(function() {
 	filepicker.pick(
-	  function(Blob){
-	    console.log(Blob.url);
-	  }
+		{
+			services: ['DROPBOX','GOOGLE_DRIVE']
+		},
+		function(blob){
+			console.log(blob);
+			filepicker.stat(
+				blob,
+				{
+					filename: true,
+					md5: true,
+					location: true,
+					path: true,
+					container: true
+				},
+				function(metadata){
+					console.log(JSON.stringify(metadata));
+				}
+			);
+		}
 	);
 });
 </script>
 
-<input type="filepicker" data-fp-apikey="A5sBfk75TUuHQnoqYqTYgz"
-onchange="processFilePicker(event);">
+<input type="filepicker" data-fp-apikey="A5sBfk75TUuHQnoqYqTYgz">
